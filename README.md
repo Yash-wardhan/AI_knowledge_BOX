@@ -4,9 +4,23 @@ Your personal AI knowledge assistant. Save notes and web links, then **ask quest
 answers come only from what you saved, with **sources you can click**, and every question and answer is
 checked by **guardrails**.
 
-<!-- Screenshots -->
-<!-- ![Ask](docs/screenshots/ask.png) -->
-<!-- ![Library](docs/screenshots/library.png) -->
+## Screenshots
+
+### Chat — ask questions, get cited answers
+
+![Chat with cited sources](screenshot/ChatAI.png)
+
+### Library — everything you've saved, with live ingestion status
+
+![Library with live ingestion status](screenshot/Live%20Rag%20Injest.png)
+
+### Add a text note
+
+![Add a text note](screenshot/TextInject.png)
+
+### Add a web link
+
+![Add a web link](screenshot/UrlInject.png)
 
 ## Features
 
@@ -32,14 +46,21 @@ checked by **guardrails**.
 **Needs:** Docker, [uv](https://docs.astral.sh/uv/), Node.js 20+
 
 ```bash
-cp backend/.env.example backend/.env   # first time only — fill in your LLM / embedding settings
 make dev
 ```
 
-That's it. `make dev` starts the database, applies migrations, and runs both servers:
+That's it. `make dev` does everything in order:
+
+1. Creates `.env.local` and `backend/.env` from their `.env.example` files (first run only, never overwrites)
+2. Installs dependencies (npm + uv) if missing
+3. Starts PostgreSQL + pgvector in Docker and waits until it is healthy
+4. Applies database migrations
+5. Runs the backend and the UI together
 
 - App → http://localhost:3000
 - API docs → http://localhost:8000/docs
+
+> **First run:** set your LLM / embedding settings in `backend/.env` (it is created for you), then run `make dev` again.
 
 **Ctrl+C** stops the app · `make docker-down` stops the database.
 
