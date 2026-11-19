@@ -1,0 +1,22 @@
+models:
+  - type: main
+    engine: openai_compatible
+    parameters:
+      base_url: "PLACEHOLDER"
+      api_key: "PLACEHOLDER"
+      model_name: "PLACEHOLDER"
+
+  - type: self_check
+    engine: openai_compatible
+    parameters:
+      base_url: "PLACEHOLDER"
+      api_key: "PLACEHOLDER"
+      model_name: "PLACEHOLDER"
+
+rails:
+  input:
+    flows:
+      - self check input
+  output:
+    flows:
+      - self check output

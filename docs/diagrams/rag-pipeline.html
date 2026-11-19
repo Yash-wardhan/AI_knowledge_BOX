@@ -1,0 +1,38 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  background: #f7f7fb; color: #18181b; -webkit-font-smoothing: antialiased;
+}
+.canvas { position: relative; overflow: hidden;
+  background:
+    radial-gradient(900px 500px at 100% 0%, rgba(109,93,252,.10), transparent 60%),
+    radial-gradient(rgba(24,24,27,.06) 1px, transparent 1px) 0 0/22px 22px, #f7f7fb; }
+h1 { font-size: 30px; letter-spacing: -.02em; font-weight: 700; }
+.sub { color: #71717a; font-size: 15px; margin-top: 6px; }
+.grad { background: linear-gradient(120deg, #6d5dfc, #b061ff); -webkit-background-clip: text; color: transparent; }
+.mono { font-family: "SF Mono", ui-monospace, Menlo, monospace; }
+
+    svg { position:absolute; inset:0; }
+    .header { position:absolute; left:60px; top:40px; }
+    .row { position:absolute; left:60px; font-size:15px; font-weight:700; color:#3f3f46; }
+    .row span { font-weight:400; color:#a1a1aa; margin-left:8px; }
+    .box { position:absolute; display:flex; align-items:center; justify-content:center; text-align:center;
+      background:#fff; border:2px solid #d4d4d8; border-radius:14px; font-size:16px; font-weight:600; padding:0 10px; }
+    .box.hl { border-color:#6d5dfc; color:#6d5dfc; background:#f5f3ff; }
+    .box.guard { border-color:#f59e0b; color:#b45309; background:#fffbeb; }
+    .gnote { position:absolute; width:170px; text-align:center; font-size:13px; color:#b45309; line-height:1.35; }
+    .ar { stroke:#71717a; stroke-width:2; marker-end:url(#arrow); }
+    .lab { font-size:14px; fill:#71717a; }
+    </style></head><body>
+<div class="canvas" style="width:1760px;height:600px">
+  <svg width="1760" height="600"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+    <path d="M0 0 L10 5 L0 10 z" fill="#71717a"/></marker></defs><line x1="236" y1="208.0" x2="262" y2="208.0" class="ar"/><line x1="446" y1="208.0" x2="472" y2="208.0" class="ar"/><line x1="656" y1="208.0" x2="682" y2="208.0" class="ar"/><line x1="236" y1="418.0" x2="262" y2="418.0" class="ar"/><line x1="446" y1="418.0" x2="472" y2="418.0" class="ar"/><line x1="656" y1="418.0" x2="682" y2="418.0" class="ar"/><line x1="866" y1="418.0" x2="892" y2="418.0" class="ar"/><line x1="1076" y1="418.0" x2="1102" y2="418.0" class="ar"/><line x1="1286" y1="418.0" x2="1312" y2="418.0" class="ar"/><line x1="1496" y1="418.0" x2="1522" y2="418.0" class="ar"/><line x1="757.0" y1="372" x2="757.0" y2="256" class="ar"/><line x1="793.0" y1="254" x2="793.0" y2="370" class="ar"/><text x="809.0" y="318.0" class="lab">top 5 matching chunks</text></svg>
+  <div class="header"><h1>RAG <span class="grad">pipeline</span></h1>
+    <p class="sub">Find the right pieces of your notes, then let the LLM answer from them — with guardrails on the way in and out.</p></div>
+  <div class="row" style="top:136px">1. Save<span>when you add a note or URL</span></div>
+  <div class="row" style="top:346px">2. Ask<span>when you ask a question</span></div>
+  <div class="gnote" style="left:270px;top:468px">blocks attacks &amp; harmful questions</div><div class="gnote" style="left:1320px;top:468px">blocks leaks &amp; harmful answers</div>
+  <div class="box" style="left:60px;top:170px;width:170px;height:76px">Note / URL</div><div class="box" style="left:270px;top:170px;width:170px;height:76px">Chunk</div><div class="box" style="left:480px;top:170px;width:170px;height:76px">Embed</div><div class="box hl" style="left:690px;top:170px;width:170px;height:76px">Vector DB</div>
+  <div class="box" style="left:60px;top:380px;width:170px;height:76px">Question</div><div class="box guard" style="left:270px;top:380px;width:170px;height:76px">Input guardrail</div><div class="box" style="left:480px;top:380px;width:170px;height:76px">Embed</div><div class="box" style="left:690px;top:380px;width:170px;height:76px">Search</div><div class="box" style="left:900px;top:380px;width:170px;height:76px">Add context</div><div class="box hl" style="left:1110px;top:380px;width:170px;height:76px">LLM</div><div class="box guard" style="left:1320px;top:380px;width:170px;height:76px">Output guardrail</div><div class="box" style="left:1530px;top:380px;width:170px;height:76px">Answer + Sources</div>
+</div></body></html>

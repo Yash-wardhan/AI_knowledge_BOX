@@ -1,0 +1,17 @@
+# NeMo >= 0.24: self_check_* actions return a RailOutcome object (always truthy),
+# so check `.is_blocked` rather than `if not $allowed`.
+
+define flow self check input
+  $response = execute self_check_input
+  if $response.is_blocked
+    bot refuse to respond
+    stop
+
+define flow self check output
+  $response = execute self_check_output
+  if $response.is_blocked
+    bot refuse to respond
+    stop
+
+define bot refuse to respond
+  "I'm sorry, I can't help with that. Please ask a question about your saved notes or URLs."
